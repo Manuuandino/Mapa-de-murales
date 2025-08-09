@@ -2,11 +2,11 @@
   <div id="app" style="height: 100vh; display: flex; flex-direction: column;">
     <div id="map" style="flex: 1;"></div>
 
-    <form @submit.prevent="handleSubmit" style="padding: 1rem; background: #f0f0f0;">
+    <form @submit.prevent="handleSubmit" class="bg-pink-500">
       <h2>Agregar lugar</h2>
-      <input v-model="form.nombre" placeholder="Nombre" required />
-      <input v-model="form.descripcion" placeholder="Descripción" />
-      <input type="file" @change="handleFileChange" accept="image/*" required />
+      <input class="p-2" v-model="form.nombre" placeholder="Nombre" required />
+      <input class="p-2" v-model="form.descripcion" placeholder="Descripción" />
+      <input class="p-2" type="file" @change="handleFileChange" accept="image/*" required />
       <button type="submit">Guardar lugar</button>
       <p v-if="error" style="color: red;">{{ error }}</p>
     </form>
