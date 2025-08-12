@@ -97,32 +97,43 @@ export function useMapa() {
 
   // Guarda el lugar (con imagen) en la BD y actualiza mapa
   async function guardarLugar() {
-    if (!form.value.lat || !form.value.lng) {
-      error.value = 'Elegí una ubicación.'
-      return
-    }
-    if (!form.value.file) {
-      error.value = 'Seleccioná una foto.'
-      return
-    }
-
-    const imagenOpt = await optimizarImagen(form.value.file)
-    const nombreArchivo = `fotos/${Date.now()}_${form.value.file.name}`
-    const urlFoto = await subirImagen(imagenOpt, nombreArchivo)
-
-    const { error: insertError } = await supabase.from('lugares').insert({
-      nombre: form.value.nombre,
-      descripcion: form.value.descripcion,
-      lat: form.value.lat,
-      lng: form.value.lng,
-      foto_url: urlFoto,
-      foto_thumb_url: urlFoto
-    })
-
-    if (insertError) throw insertError
-
-    await cargarLugares()
+  if (!form.value.lat || !form.value.lng) {
+    error.value = 'Elegí una ubicación.'
+    return
   }
+  if (!form.value.file) {
+    error.value = 'Seleccioná una foto.'
+    return
+  }
+
+  const imagenOpt = await optimizarImagen(form.value.file)
+  const nombreArchivo = `fotos/${Date.now()}_${form.value.file.name}`
+  const urlFoto = await subirImagen(imagenOpt, nombreArchivo)
+
+  const { error: insertError } = await supabase.from('lugares').insert({
+    nombre: form.value.nombre,
+    descripcion: form.value.descripcion,
+    lat: form.value.lat,
+    lng: form.value.lng,
+    foto_url: urlFoto,
+    foto_thumb_url: urlFoto
+  })
+
+  if (insertError) throw insertError
+
+  await cargarLugares()
+
+  // 🔹 Limpiar formulario y vista previa
+  form.value = {
+    nombre: '',
+    descripcion: '',
+    lat: null,
+    lng: null,
+    file: null,
+    imagenPreview: null
+  }
+}
+
 
   // Exponemos las funciones y variables para usar en el componente
   return {
