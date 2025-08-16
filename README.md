@@ -1,5 +1,32 @@
-# Vue 3 + Vite
+# 📌 Proyecto: Mapa de Fotos
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este proyecto es una aplicación web que permite **mostrar un mapa interactivo** y asociar **fotografías a lugares específicos**.  
+El objetivo es que los usuarios puedan subir imágenes, visualizarlas en el mapa y gestionar los datos de manera simple.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+---
+
+## 🚀 Tecnologías y recursos utilizados
+
+- **Vue 3** → Framework principal de la aplicación.  
+- **Vite** → Bundler y servidor de desarrollo rápido.  
+- **Tailwind CSS** → Framework de estilos utilitarios.  
+- **Leaflet** → Librería para mapas interactivos.  
+- **Supabase** → Backend como servicio para:
+  - Guardar datos de los lugares y fotos.  
+  - Manejo de autenticación de usuarios (opcional en futuro).  
+- **browser-image-compression** → Librería para comprimir imágenes antes de subirlas.  
+
+---
+
+## 🛠️ Instalación y ejecución
+
+1. **Clonar el repositorio**  
+   ```bash
+   git clone https://github.com/usuario/mapa-fotos.git
+   cd mapa-fotos
+2. **Instalar dependencias**
+    npm install
+3. **Levantar el servidor de desarrollo**
+    npm run dev
+4. **Abrir en el navegador**
+    http://localhost:5173
